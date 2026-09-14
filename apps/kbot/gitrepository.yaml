@@ -1,0 +1,16 @@
+# Source of the kbot Helm chart: the develop branch of the application repo.
+# GitHub Actions commits a new image tag to helm/values.yaml on every build,
+# which produces a new revision here.
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: kbot
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: https://github.com/Alexander-2212/kbot
+  ref:
+    branch: develop
+  ignore: |
+    /*
+    !/helm/
